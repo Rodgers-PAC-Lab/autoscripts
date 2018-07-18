@@ -13,8 +13,8 @@
 #   `curl` should be installed
 #
 # Outputs:
-#   /home/jack/mnt/nas2_home/django_mouse_cloud/DATESTRING.dump
-#   /home/jack/mnt/nas2_home/django_rmb_colony/DATESTRING.dump
+#   /home/jack/mnt/nas2_home/backups/django_mouse_cloud/DATESTRING.dump
+#   /home/jack/mnt/nas2_home/backups/django_rmb_colony/DATESTRING.dump
 #
 # Run like this:
 # /bin/bash -l -c 'cd dev/autoscripts/backup_heroku; python backup_heroku.py >> logfile 2>&1'
