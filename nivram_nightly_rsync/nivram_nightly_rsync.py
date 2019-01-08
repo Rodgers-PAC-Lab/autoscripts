@@ -14,11 +14,10 @@ import os
 import sys
 
 # rsync will be called with this logfile
-#logfile = '/home/chris/scripts/nightly_rsync.log'
 logfile = 'nightly_rsync.log'
 
 # Check that it's actually mounted before running
-nas2_home_output_dir = '/home/chris/mnt/nas2_home'
+nas2_home_output_dir = '/mnt/nas2_home'
 nas2_behavior_output_dir = '/mnt/behavior'
 if not os.path.ismount(nas2_home_output_dir):
     raise IOError("Not a mount: %s" % nas2_home_output_dir)
