@@ -139,6 +139,7 @@ stdout, stderr = pipe.communicate()
 # Remove the pdfs from disk
 for fig in figs:
     os.remove(fig)
+os.remove('text.pdf')
 
 # Email params
 fromaddr = "labautoemail@gmail.com"
