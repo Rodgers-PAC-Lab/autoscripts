@@ -1,5 +1,5 @@
 # Sequence of scripts to run after behavior each day
-# Must be run with /bin/bash -l -c 'cd THIS_DIR; THIS_SCRIPT'
+# Must be run with /bin/bash -l -c 'cd THIS_DIR; bash post_behavior.sh --email'
 # Three steps:
 # 1. rsync and daily update
 #    writes to 'logfile' in auto/post_behavior
@@ -9,9 +9,6 @@
 #    Should be 'logfile' but haven't made this consistent yet
 # 3. nightly_email
 #    writes to 'logfile'
-
-# everything is in post_behavior
-cd /home/autoscript/scripts/auto/post_behavior
 
 # rsync and daily update
 echo rsync and daily update
