@@ -21,7 +21,8 @@ if not os.path.ismount(output_dir):
     raise IOError("Not a mount: %s" % output_dir)
 
 # run rsync and log results
-logfile = '/home/autoscript/scripts/auto/post_behavior/rsync.log'
+#logfile = '/home/autoscript/scripts/auto/post_behavior/rsync.log'
+logfile = 'rsync.log'
 input_dir = '/home/mouse/sandbox_root'
 #output_dir = '/home/mouse/mnt/nas2_home/behavior'
 output_dir = '/mnt/behavior'
