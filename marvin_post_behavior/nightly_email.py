@@ -77,10 +77,14 @@ formatters = {
     'filename': drop_runmice_dir,
     }
 
-todays_db = db[db.dt_end.apply(lambda dt: dt.date()) == target_date]
+# Get the sessions from the target date
+todays_db = db[
+    (db.dt_end.apply(lambda dt: dt.date()) == target_date) &
+    (db['mouse'].isin(active_mice))
+]
 todays_db = todays_db.set_index('session')
-todays_db = todays_db[['mouse', 'rig', 'dt_start', 'duration', 'filename',
-    'protocol', 'stimulus_set']]
+todays_db = todays_db[['mouse', 'rig', 'dt_start', 'duration', 'filename', 
+    'protocol', 'stimulus_set']].sort_values('mouse')
 
 # Print parsed sessions
 text_results.append("PARSED SESSIONS FROM TODAY: (%d)" % len(todays_db))
@@ -93,18 +97,10 @@ unrun_mice = [mouse for mouse in active_mice
 text_results.append("\n\nMICE THAT WERE NOT RUN: (%d)" % len(unrun_mice))
 text_results.append(' '.join(unrun_mice))
 
-# Check for inactive mice that were run
-inactive_run_mice = [mouse for mouse in todays_db.mouse.values
-    if mouse not in active_mice]
-text_results.append(
-    "\n\nINACTIVE MICE THAT WERE RUN: (%d)" % len(inactive_run_mice))
-text_results.append(' '.join(inactive_run_mice))
-
 # Print perf metrics from today
-todays_pdf = pdf.set_index('session').ix[todays_db.index]
-todays_pdf['n_trials'] = todays_pdf['n_trials']
+todays_pdf = pdf.set_index('session').loc[todays_db.index]
 todays_pdf = todays_pdf.join(todays_db[['rig']])
-todays_pdf = todays_pdf.sort_values(by='perf_unforced', ascending=False)
+#~ todays_pdf = todays_pdf.sort_values(by='perf_unforced', ascending=False)
 text_results.append("\n\nPERFORMANCE METRICS:")
 text_results.append(todays_pdf[
     ['rig', 'n_trials', 'spoil_frac', 'perf_all', 'perf_unforced']
@@ -117,7 +113,8 @@ html = weasyprint.HTML(string=html_text)
 html.write_pdf('text.pdf')
 
 # Performance plots by training stage
-pbts_fig_l = MCwatch.behavior.db_plot.plot_by_training_stage()
+pbts_fig_l = MCwatch.behavior.db_plot.plot_by_training_stage(
+    mouse_names=active_mice)
 for nfig, fig in enumerate(pbts_fig_l):
     figname = 'perf_by_training_stage%d.pdf' % nfig
     fig.savefig(figname)
@@ -138,6 +135,10 @@ pipe = subprocess.Popen(['pdftk', 'text.pdf'] + figs +
     ['cat', 'output', 'report.pdf'],
     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 stdout, stderr = pipe.communicate()
+
+# Remove the pdfs from disk
+for fig in figs:
+    os.remove(fig)
 
 # Email params
 fromaddr = "labautoemail@gmail.com"
@@ -170,6 +171,8 @@ server.login(username, password)
 server.sendmail(fromaddr, toaddrs, msg.as_string())
 server.close()
 
+# Delete the pdf
+os.remove(filename)
 
 # Print stop time
 print "AUTORUN_STOP_TIME : %s" % str(datetime.datetime.now())
