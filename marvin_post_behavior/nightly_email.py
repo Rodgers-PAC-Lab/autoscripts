@@ -56,10 +56,10 @@ elif args.experimenter == 'all':
 elif args.experimenter == '':
     print "No experimenter provided, exiting."
     print "Specify chris, jung, or all, if you want to send an email"
-    sys.exit()
+    experimenters = []
 else:
     print "Experimenter must be chris, jung, or all, not %r" % args.experimenter
-    sys.exit()
+    experimenters = []
 
 
 # Iterate over experimenters and send one email to each   
