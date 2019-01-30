@@ -39,7 +39,17 @@ def drop_runmice_dir(s):
         raise ValueError("string does not begin with runmice path")
     return s[len(token):]
 
-# Daily update can only happen on marvin
+
+# Choose the toaddrs
+target = 'chris'
+if target == 'chris':
+    toaddrs = ["xrodgers@gmail.com",] # esther
+    experimenter_id = 0
+elif target == 'jung':
+    toaddrs = ["jp3641@columbia.edu"]
+    experimenter_id = 1
+else:
+    raise ValueError("unknown target: %r" % target)
 
 # Put the text results here
 text_results = []
@@ -56,7 +66,8 @@ text_results.append("Target date: %s" % str(target_date))
 db = MCwatch.behavior.db.get_behavior_df()
 pdf = MCwatch.behavior.db.get_perf_metrics()
 active_mice = list(runner.models.Mouse.objects.filter(
-    in_training=True).values_list('name', flat=True))        
+    in_training=True, experimenter=experimenter_id
+    ).values_list('name', flat=True))
 
 # Print out data from today's session
 formatters = {
@@ -130,7 +141,6 @@ stdout, stderr = pipe.communicate()
 
 # Email params
 fromaddr = "labautoemail@gmail.com"
-toaddrs = ["xrodgers@gmail.com", "jp3641@columbia.edu"]
 username = "labautoemail@gmail.com"
 password = "sensorycortex"
 
