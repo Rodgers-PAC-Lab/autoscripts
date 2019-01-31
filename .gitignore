@@ -2,3 +2,5 @@ logfile
 credentials
 nightly_rsync.log
 put_new.log
+rsync.log
+*.pdf
