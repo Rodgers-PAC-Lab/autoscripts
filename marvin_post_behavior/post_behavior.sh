@@ -12,6 +12,9 @@
 # 3. nightly_email
 #    writes to 'logfile' in this directory
 
+# chdir if it wasn't already
+cd /home/autoscript/dev/autoscripts/marvin_post_behavior
+
 # rsync and daily update
 echo rsync and daily update
 python rsync_and_daily_update.py >> logfile 2>&1
