@@ -152,7 +152,12 @@ for experimenter in experimenters:
     for nsession, session in enumerate(todays_db.index):
         if todays_db.loc[session, 'protocol'] != 'TwoChoice':
             continue
-        f = MCwatch.behavior.db_plot.display_session_plot(session)
+        try:
+            f = MCwatch.behavior.db_plot.display_session_plot(session)
+        except:
+            # This happens with empty trial matrix
+            print "cannot generate session plot"
+            continue
         figname = 'session%d.pdf' % nsession
         figs.append(figname)
         f.savefig(figname)
