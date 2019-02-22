@@ -69,6 +69,7 @@ for experimenter in experimenters:
         toaddrs = [
             "xrodgers@gmail.com",
             "eg3026@columbia.edu",
+            "bcp2119@columbia.edu",
         ]
         experimenter_id = 0
     elif experimenter == 'jung':
