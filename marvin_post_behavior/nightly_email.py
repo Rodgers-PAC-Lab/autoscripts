@@ -69,7 +69,6 @@ for experimenter in experimenters:
         toaddrs = [
             "xrodgers@gmail.com",
             "eg3026@columbia.edu",
-            "bcp2119@columbia.edu",
         ]
         experimenter_id = 0
     elif experimenter == 'jung':
@@ -178,7 +177,8 @@ for experimenter in experimenters:
     # Email params
     fromaddr = "labautoemail@gmail.com"
     username = "labautoemail@gmail.com"
-    password = "sensorycortex"
+    with file('credentials') as fi:
+        password = fi.readlines()[0].strip()
 
     # Construct msg
     msg = email.mime.Multipart.MIMEMultipart(
