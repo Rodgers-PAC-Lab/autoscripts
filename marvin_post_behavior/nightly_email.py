@@ -67,18 +67,21 @@ for experimenter in experimenters:
     # Get the toaddrs and experimenter_id
     if experimenter == 'chris':
         toaddrs = [
-            "xrodgers@gmail.com",
-            "eg3026@columbia.edu",
+            "xrodgers_cat_gmail_dog_com",
+            "eg3026_cat_columbia_dog_edu",
         ]
         experimenter_id = 0
     elif experimenter == 'jung':
         toaddrs = [
-            "jp3641@columbia.edu",
+            "jp3641_cat_columbia_dog_edu",
         ]
         experimenter_id = 1        
     else:
         raise ValueError("unknown experimenter: %s" % experimenter)
     
+    for n in range(len(toaddrs)):
+        toaddrs[n] = toaddrs[n].replace('_cat_', '@').replace('_dog_', '.')
+
     # Put the text results here
     text_results = []
     text_results.append('Behavior report: ' + str(datetime.datetime.now()))
