@@ -37,6 +37,8 @@ parser.add_argument("experimenter", nargs='?', default='')
 
 args = parser.parse_args()
 
+DRY_RUN = False
+
 def date_from_YMDHMS(s):
     """Given a string like 201501011159, return datetime"""
     return datetime.datetime.strptime(s, '%Y%m%d%H%M%S')
@@ -151,6 +153,13 @@ for experimenter in experimenters:
         fig.savefig(figname)
         figs.append(figname)
 
+    # Plot by box
+    if experimenter == 'chris':
+        f = MCwatch.behavior.db_plot.display_perf_by_rig()
+        figname = 'perf_by_box.pdf'
+        f.savefig(figname)
+        figs.append(f)
+
     # Session plots
     for nsession, session in enumerate(todays_db.index):
         if todays_db.loc[session, 'protocol'] != 'TwoChoice':
@@ -202,15 +211,16 @@ for experimenter in experimenters:
             ))
 
     # Send message
-    server = smtplib.SMTP('smtp.gmail.com:587')
-    server.ehlo()
-    server.starttls()
-    server.login(username, password)
-    server.sendmail(fromaddr, toaddrs, msg.as_string())
-    server.close()
+    if not DRY_RUN:
+        server = smtplib.SMTP('smtp.gmail.com:587')
+        server.ehlo()
+        server.starttls()
+        server.login(username, password)
+        server.sendmail(fromaddr, toaddrs, msg.as_string())
+        server.close()
 
-    # Delete the pdf
-    os.remove(filename)
+        # Delete the pdf
+        os.remove(filename)
 
 # Print stop time
 print "AUTORUN_STOP_TIME : %s" % str(datetime.datetime.now())
