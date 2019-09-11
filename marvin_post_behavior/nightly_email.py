@@ -159,7 +159,8 @@ for experimenter in experimenters:
         f = MCwatch.behavior.db_plot.display_perf_by_rig()
         figname = 'perf_by_box.pdf'
         f.savefig(figname)
-        figs.append(f)
+        figs.append(figname)
+        plt.close(f)
 
     # Session plots
     for nsession, session in enumerate(todays_db.index):
