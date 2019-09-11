@@ -74,6 +74,7 @@ for experimenter in experimenters:
     elif experimenter == 'jung':
         toaddrs = [
             "jp3641_cat_columbia_dog_edu",
+            "jbd2144_cat_columbia_dog_edu",
         ]
         experimenter_id = 1        
     else:
