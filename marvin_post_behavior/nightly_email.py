@@ -77,6 +77,7 @@ for experimenter in experimenters:
         toaddrs = [
             "jp3641_cat_columbia_dog_edu",
             "jbd2144_cat_columbia_dog_edu",
+            "ers2204_cat_columbia_dog_edu",
         ]
         experimenter_id = 1        
     else:
