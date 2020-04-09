@@ -21,6 +21,8 @@ import subprocess
 import smtplib
 import email
 from email.mime.application import MIMEApplication
+import email.mime.multipart
+import email.mime.text
 import os.path
 import runner.models
 
@@ -196,13 +198,13 @@ for experimenter in experimenters:
         password = fi.readlines()[0].strip()
 
     # Construct msg
-    msg = email.mime.Multipart.MIMEMultipart(
+    msg = email.mime.multipart.MIMEMultipart(
         From=fromaddr,
         To=email.utils.COMMASPACE.join(toaddrs),
         Date=email.utils.formatdate(localtime=True),
         Subject="Behavior auto report %s" % str(target_date),
         )
-    msg.attach(email.mime.Text.MIMEText(html_text, "html"))
+    msg.attach(email.mime.text.MIMEText(html_text, "html"))
 
     # Attach file
     filename = 'report.pdf'
