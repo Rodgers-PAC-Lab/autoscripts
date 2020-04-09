@@ -2,9 +2,9 @@
 # Accepts an "experimenter" parameter which can be chris, jung, or all
 
 # Announce the start and start time
-print "AUTORUN_START nightly_email"
+print("AUTORUN_START nightly_email")
 import datetime
-print "AUTORUN_START_TIME : %s" % str(datetime.datetime.now())
+print("AUTORUN_START_TIME : %s" % str(datetime.datetime.now()))
 import sys
 sys.stdout.flush()
 
@@ -56,11 +56,11 @@ elif args.experimenter == 'jung':
 elif args.experimenter == 'all':
     experimenters = ['chris', 'jung']
 elif args.experimenter == '':
-    print "No experimenter provided, exiting."
-    print "Specify chris, jung, or all, if you want to send an email"
+    print("No experimenter provided, exiting.")
+    print("Specify chris, jung, or all, if you want to send an email")
     experimenters = []
 else:
-    print "Experimenter must be chris, jung, or all, not %r" % args.experimenter
+    print("Experimenter must be chris, jung, or all, not %r" % args.experimenter)
     experimenters = []
 
 
@@ -171,7 +171,7 @@ for experimenter in experimenters:
             f = MCwatch.behavior.db_plot.display_session_plot(session)
         except:
             # This happens with empty trial matrix
-            print "cannot generate session plot"
+            print("cannot generate session plot")
             continue
         figname = 'session%d.pdf' % nsession
         figs.append(figname)
@@ -192,7 +192,7 @@ for experimenter in experimenters:
     # Email params
     fromaddr = "labautoemail@gmail.com"
     username = "labautoemail@gmail.com"
-    with file('credentials') as fi:
+    with open('credentials') as fi:
         password = fi.readlines()[0].strip()
 
     # Construct msg
@@ -226,4 +226,4 @@ for experimenter in experimenters:
         os.remove(filename)
 
 # Print stop time
-print "AUTORUN_STOP_TIME : %s" % str(datetime.datetime.now())
+print("AUTORUN_STOP_TIME : %s" % str(datetime.datetime.now()))

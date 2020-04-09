@@ -5,9 +5,9 @@
 # This ensures that the python installation and paths are correct
 
 # Announce the start and start time
-print "AUTORUN_START rsync_and_daily_update"
+print("AUTORUN_START rsync_and_daily_update")
 import datetime
-print "AUTORUN_START_TIME : %s" % str(datetime.datetime.now())
+print("AUTORUN_START_TIME : %s" % str(datetime.datetime.now()))
 
 # Rest of imports
 import os
@@ -27,14 +27,14 @@ input_dir = '/home/mouse/sandbox_root'
 #output_dir = '/home/mouse/mnt/nas2_home/behavior'
 output_dir = '/mnt/behavior'
 cmd = 'rsync -rt --exclude="TO_DEV" --log-file=%s %s %s' % (logfile, input_dir, output_dir)
-print "rsync : %s" % str(datetime.datetime.now())
-print cmd
+print("rsync : %s" % str(datetime.datetime.now()))
+print(cmd)
 sys.stdout.flush() # to maintain the order of print and os.system in the logfile
 os.system(cmd)
 
 # Run the updates etc
-print "daily update : %s" % str(datetime.datetime.now())
+print("daily update : %s" % str(datetime.datetime.now()))
 MCwatch.behavior.daily_update.daily_update()
 
 # Print stop time
-print "AUTORUN_STOP_TIME : %s" % str(datetime.datetime.now())
+print("AUTORUN_STOP_TIME : %s" % str(datetime.datetime.now()))
