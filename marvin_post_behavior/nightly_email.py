@@ -110,7 +110,7 @@ for experimenter in experimenters:
     formatters = {
         'dt_start': lambda dt: pandas.to_datetime(dt).strftime('%H:%M:%S'),
         'dt_end': lambda dt: pandas.to_datetime(dt).strftime('%H:%M:%S'),
-        'duration': lambda dt: pandas.to_datetime(dt).strftime('%H:%M:%S'),
+        'duration': lambda dt: str(dt / np.timedelta64(1, 's')),
         'filename': drop_runmice_dir,
         }
 
