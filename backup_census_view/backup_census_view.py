@@ -6,6 +6,7 @@
 #   /home/jack/mnt/nas2_home should be mounted
 #   /home/jack/mnt/nas2_home/backups/rmb-colony-html should be a directory
 #   './credentials' must exist and be valid in the current directory
+#   The user specified by 'credentials' must exist and have staff privileges
 #
 # Outputs:
 #   /home/jack/mnt/nas2_home/rmb-colony-html/YEAR/MONTH/DAY/index.DATESTRING.html
@@ -27,7 +28,8 @@ now = datetime.datetime.now()
 dt_string = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
 # Root directory on NAS
-root_output_directory = '/home/jack/mnt/nas2_home/backups/rmb-colony-html'
+#root_output_directory = '/home/jack/mnt/nas2_home/backups/rmb-colony-html'
+root_output_directory = '/home/jack/data/krill-html'
 
 # Nested directory for today
 output_directory = root_output_directory
@@ -50,7 +52,7 @@ username = credentials['username']
 password = credentials['password']
 
 # Connect to login url and get the cookies
-URL = "https://rmb-colony.herokuapp.com/admin/login/"
+URL = "https://paclab-krill.herokuapp.com/admin/login/"
 client = requests.session()
 client.get(URL)
 csrftoken = client.cookies['csrftoken']
@@ -59,7 +61,7 @@ cookies = dict(client.cookies)
 # Now post the login information and continue to /colony/
 # token has to be in the header, and also in the cookies
 headers = {
-    'Referer': 'https://rmb-colony.herokuapp.com', # required
+    'Referer': 'https://paclab-krill.herokuapp.com', # required
     'X-CSRFToken': csrftoken # required
 }
 login_data = {
