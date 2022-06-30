@@ -6,15 +6,13 @@
 #
 # Requirements:
 #   /home/jack/mnt/nas2_home should be mounted
-#   /home/jack/mnt/nas2_home/backups/django_mouse_cloud should be a directory
-#   /home/jack/mnt/nas2_home/backups/django_rmb_colony should be a directory
-#   `heroku pg:backups public-url --app mouse-cloud` should work
-#   `heroku pg:backups public-url --app rmb-colony` should work
+#   /home/jack/mnt/nas2_home/backups should be adirectory
+#   /home/jack/mnt/nas2_home/backups/krill should be a directory
+#   `heroku pg:backups public-url --app paclab-krill` should work
 #   `curl` should be installed
 #
 # Outputs:
-#   /home/jack/mnt/nas2_home/backups/django_mouse_cloud/DATESTRING.dump
-#   /home/jack/mnt/nas2_home/backups/django_rmb_colony/DATESTRING.dump
+#   /home/jack/mnt/nas2_home/backups/krill/DATESTRING.dump
 #
 # Run like this:
 # /bin/bash -l -c 'cd dev/autoscripts/backup_heroku; python backup_heroku.py >> logfile 2>&1'
@@ -31,30 +29,22 @@ print "AUTORUN_START_TIME : %s" % str(datetime.datetime.now())
 sys.stdout.flush()
 
 # Where to copy files to
-mount_dir = '/home/jack/mnt/nas2_home'
+mount_dir = '/home/jack/data' #'/home/jack/mnt/nas2_home'
 backups_dir = os.path.join(mount_dir, 'backups')
 
-# Check that it's mounted
-if not os.path.ismount(mount_dir):
-    raise IOError("Not a mount: %s" % mount_dir)
+#~ # Check that it's mounted
+#~ if not os.path.ismount(mount_dir):
+    #~ raise IOError("Not a mount: %s" % mount_dir)
 
-# Postgres backup of mouse-cloud
-backup_path = os.path.join(backups_dir, 'django_mouse_cloud')
-backup_file = datetime.date.today().strftime('%Y-%m-%d')
-backup_full_file = os.path.join(backup_path, backup_file + '.dump')
-cmd = 'curl -o %s `heroku pg:backups public-url --app mouse-cloud`' % backup_full_file
-print "\n# Dumping mouse-cloud to pgdump"
-print cmd
-os.system(cmd)
-
-# Postgres backup of rmb-colony
-# heroku is set to perform a pg:backup every day at 2AM
+# Postgres backup of paclab-krill
+# heroku is set to perform a pg:backup every day at 11PM
+# Confirm this with: heroku pg:backups:schedules --app paclab-krill
 # this script runs a few hours later so it should pull the latest version
-backup_path = os.path.join(backups_dir, 'django_rmb_colony')
+backup_path = os.path.join(backups_dir, 'krill')
 backup_file = datetime.date.today().strftime('%Y-%m-%d')
 backup_full_file = os.path.join(backup_path, backup_file + '.dump')
-cmd = 'curl -o %s `heroku pg:backups public-url --app rmb-colony`' % backup_full_file
-print "\n# Dumping rmb-colony to pgdump"
+cmd = 'curl -o %s `heroku pg:backups public-url --app paclab-krill`' % backup_full_file
+print "\n# Dumping paclab-krill to pgdump"
 print cmd
 os.system(cmd)
 
