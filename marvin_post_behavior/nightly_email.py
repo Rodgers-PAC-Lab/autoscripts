@@ -135,7 +135,8 @@ for experimenter in experimenters:
     text_results.append(' '.join(unrun_mice))
 
     # Print perf metrics from today
-    todays_pdf = pdf.set_index('session').loc[todays_db.index]
+    todays_pdf = pdf.drop_duplicates(
+        subset=['session']).set_index('session').reindex(todays_db.index)
     todays_pdf = todays_pdf.join(todays_db[['rig']])
     #~ todays_pdf = todays_pdf.sort_values(by='perf_unforced', ascending=False)
     text_results.append("\n\nPERFORMANCE METRICS:")
