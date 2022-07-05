@@ -18,6 +18,9 @@
 # /bin/bash -l -c 'cd dev/autoscripts/backup_heroku; python backup_heroku.py >> logfile 2>&1'
 # This ensures that the python installation and paths are correct
 #
+# For whatever reason I had to add PATH=/path/to/heroku in the single quoted
+# command in the crontab. Probably because it doesn't run in interactive mode
+# and thus doesn't source bashrc.
 
 import sys
 import datetime
