@@ -4,3 +4,5 @@ nightly_rsync.log
 put_new.log
 rsync.log
 *.pdf
+rclone.log
+rclone_s3.sh.output
