@@ -91,7 +91,11 @@ response = requests.post(URL,
 if len(response.text) < 100000:
     print("WARNING: did not get very much text")
 
+# Write out the files
 with open(output_filename1, 'w') as fi:
     fi.write(response.text)
 with open(output_filename2, 'w') as fi:
     fi.write(response.text)
+
+# Announce the stop time
+print("AUTORUN_STOP_TIME : %s" % str(datetime.datetime.now()))
