@@ -1,18 +1,18 @@
-# This automatic script backs up mouse-cloud and rmb-colony to NAS.
+# This automatic script backs up paclab-krill to cuttlefish.
 #
-# It runs nightly on gamma. It should run after the heroku automatic 
-# backup (pg:backup) has run, which currently starts at 2 AM and requires
-# almost an hour to complete.
+# It runs nightly on cephalopod. It should run after the heroku automatic 
+# backup (pg:backup) has run, which currently starts at XXX AM and requires
+# almost XXX hour to complete.
 #
 # Requirements:
-#   /home/jack/mnt/nas2_home should be mounted
-#   /home/jack/mnt/nas2_home/backups should be adirectory
-#   /home/jack/mnt/nas2_home/backups/krill should be a directory
+#   /home/chris/mnt/cuttlefish should be mounted
+#   /home/chris/mnt/cuttlefish/chris/backups should be a directory
+#   /home/chris/mnt/cuttlefish/chris/backups/krill should be a directory
 #   `heroku pg:backups public-url --app paclab-krill` should work
 #   `curl` should be installed
 #
 # Outputs:
-#   /home/jack/mnt/nas2_home/backups/krill/DATESTRING.dump
+#   /home/chris/mnt/cuttlefish/chris/backups/krill/DATESTRING.dump
 #
 # Run like this:
 # /bin/bash -l -c 'cd dev/autoscripts/backup_heroku; python backup_heroku.py >> logfile 2>&1'
@@ -32,12 +32,12 @@ print("AUTORUN_START_TIME : %s" % str(datetime.datetime.now()))
 sys.stdout.flush()
 
 # Where to copy files to
-mount_dir = '/home/jack/data' #'/home/jack/mnt/nas2_home'
-backups_dir = os.path.join(mount_dir, 'backups')
+mount_dir = '/home/chris/mnt/cuttlefish'
+backups_dir = os.path.join(mount_dir, 'chris', 'backups')
 
-#~ # Check that it's mounted
-#~ if not os.path.ismount(mount_dir):
-    #~ raise IOError("Not a mount: %s" % mount_dir)
+# Check that it's mounted
+if not os.path.ismount(mount_dir):
+    raise IOError("Not a mount: %s" % mount_dir)
 
 # Postgres backup of paclab-krill
 # heroku is set to perform a pg:backup every day at 11PM
