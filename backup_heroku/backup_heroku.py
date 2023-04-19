@@ -27,8 +27,8 @@ import datetime
 import os
 
 # Announce the start and start time
-print "AUTORUN_START backup_heroku"
-print "AUTORUN_START_TIME : %s" % str(datetime.datetime.now())
+print("AUTORUN_START backup_heroku")
+print("AUTORUN_START_TIME : %s" % str(datetime.datetime.now()))
 sys.stdout.flush()
 
 # Where to copy files to
@@ -47,10 +47,10 @@ backup_path = os.path.join(backups_dir, 'krill')
 backup_file = datetime.date.today().strftime('%Y-%m-%d')
 backup_full_file = os.path.join(backup_path, backup_file + '.dump')
 cmd = 'curl -o %s `heroku pg:backups public-url --app paclab-krill`' % backup_full_file
-print "\n# Dumping paclab-krill to pgdump"
-print cmd
+print("\n# Dumping paclab-krill to pgdump")
+print(cmd)
 os.system(cmd)
 
 
 # Announce the stop time
-print "AUTORUN_STOP_TIME : %s" % str(datetime.datetime.now())
+print("AUTORUN_STOP_TIME : %s" % str(datetime.datetime.now()))

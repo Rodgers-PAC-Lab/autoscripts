@@ -36,7 +36,7 @@ output_directory = root_output_directory
 for number in now.year, now.month, now.day:
     output_directory = os.path.join(output_directory, str(number))
     if not os.path.exists(output_directory):
-        print "creating directory", output_directory
+        print("creating directory", output_directory)
         os.mkdir(output_directory)
 
 # Filename, one with date string, one without
@@ -46,7 +46,7 @@ output_filename2 = os.path.join(output_directory,
     'index.html')
 
 # load credentials
-with file('credentials') as fi:
+with open('credentials') as fi:
     credentials = json.load(fi)
 username = credentials['username']
 password = credentials['password']
@@ -72,9 +72,9 @@ response = requests.post(URL,
     data=login_data, headers=headers, cookies=cookies)
 
 if len(response.text) < 100000:
-    print "WARNING: did not get very much text"
+    print("WARNING: did not get very much text")
 
-with file(output_filename1, 'w') as fi:
+with open(output_filename1, 'w') as fi:
     fi.write(response.text)
-with file(output_filename2, 'w') as fi:
+with open(output_filename2, 'w') as fi:
     fi.write(response.text)
