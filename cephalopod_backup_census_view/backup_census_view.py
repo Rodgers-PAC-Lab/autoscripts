@@ -1,38 +1,55 @@
-# This automatic script backs up a copy of the census view to the NAS.
+# This automatic script backs up a copy of the census view to cuttlefish.
 #
-# It runs nightly on gamma.
+# It runs nightly on cephalopod. 
 #
 # Requirements:
-#   /home/jack/mnt/nas2_home should be mounted
-#   /home/jack/mnt/nas2_home/backups/rmb-colony-html should be a directory
+#   /home/chris/mnt/cuttlefish should be mounted
+#   /home/chris/mnt/cuttlefish/chris/backups should be a directory
+#   /home/chris/mnt/cuttlefish/chris/backups/krill-html should be a directory
 #   './credentials' must exist and be valid in the current directory
 #   The user specified by 'credentials' must exist and have staff privileges
 #
 # Outputs:
-#   /home/jack/mnt/nas2_home/rmb-colony-html/YEAR/MONTH/DAY/index.DATESTRING.html
-#   /home/jack/mnt/nas2_home/rmb-colony-html/YEAR/MONTH/DAY/index.html
+#   /home/chris/mnt/cuttlefish/chris/backups/krill-html/YEAR/MONTH/DAY/index.DATESTRING.html
+#   /home/chris/mnt/cuttlefish/chris/backups/krill-html/YEAR/MONTH/DAY/index.html
 #
 # Run like this:
-# /bin/bash -l -c 'cd dev/autoscripts/backup_census_view; python backup_census_view.py >> logfile 2>&1'
-# This ensures that the python installation and paths are correct
+# /bin/bash -i -l -c 'cd /home/chris/dev/autoscripts/cephalopod_backup_census_view; python3 backup_census_view.py >> logfile 2>&1'
+# Use python3 because python may not exist outside of a conda environment
+# The bash flags are probably not necessary here because no special modules
+# are required
 
-import os
+# Minimal imports
+import sys
 import datetime
+import os
+
+# Announce the start and start time
+print("AUTORUN_START backup_census_view")
+print("AUTORUN_START_TIME : %s" % str(datetime.datetime.now()))
+sys.stdout.flush()
+
+# Rest of imports
 import requests
 import json
 
-# Store the output in a dated directory on the nas
-# Would be better to get the root backups directory from the command line
-# somehow
+# Where to copy files to
+mount_dir = '/home/chris/mnt/cuttlefish'
+backups_dir = os.path.join(mount_dir, 'chris', 'backups')
+
+# Check that it's mounted
+if not os.path.ismount(mount_dir):
+    raise IOError("Not a mount: %s" % mount_dir)
+
+# This is the root of the backup
+backup_path = os.path.join(backups_dir, 'krill-html')
+
+# Store the output in a dated directory nested within backup_path
 now = datetime.datetime.now()
 dt_string = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
-# Root directory on NAS
-#root_output_directory = '/home/jack/mnt/nas2_home/backups/rmb-colony-html'
-root_output_directory = '/home/jack/data/krill-html'
-
 # Nested directory for today
-output_directory = root_output_directory
+output_directory = backup_path
 for number in now.year, now.month, now.day:
     output_directory = os.path.join(output_directory, str(number))
     if not os.path.exists(output_directory):
