@@ -1,8 +1,8 @@
 # This automatic script backs up paclab-krill to cuttlefish.
 #
 # It runs nightly on cephalopod. It should run after the heroku automatic 
-# backup (pg:backup) has run, which currently starts at XXX AM and requires
-# almost XXX hour to complete.
+# backup (pg:backup) has run, which currently starts at 11 PM ET and requires
+# ~2-10 minutes to complete.
 #
 # Requirements:
 #   /home/chris/mnt/cuttlefish should be mounted
@@ -15,12 +15,11 @@
 #   /home/chris/mnt/cuttlefish/chris/backups/krill/DATESTRING.dump
 #
 # Run like this:
-# /bin/bash -l -c 'cd dev/autoscripts/backup_heroku; python backup_heroku.py >> logfile 2>&1'
-# This ensures that the python installation and paths are correct
-#
-# For whatever reason I had to add PATH=/path/to/heroku in the single quoted
-# command in the crontab. Probably because it doesn't run in interactive mode
-# and thus doesn't source bashrc.
+# /bin/bash -i -l -c 'cd /home/chris/dev/autoscripts/cephalopod_backup_heroku; python3 backup_heroku.py >> logfile 2>&1'
+# Use python3 because python may not exist outside of a conda environment
+# These flags should ensure that heroku is are available on the PATH
+# An alternative is to add PATH=/path/to/heroku in the single quoted command
+# in the crontab.
 
 import sys
 import datetime
