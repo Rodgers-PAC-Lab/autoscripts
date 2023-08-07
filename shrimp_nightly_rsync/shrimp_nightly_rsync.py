@@ -1,7 +1,7 @@
 # rsync the video data from shrimp to cuttlefish
 #
 # Run like this:
-# /bin/bash -l -c 'cd /home/mouse/dev/autoscripts/shrimp_nightly_rsync; python shrimp_nightly_rsync.py >> logfile 2>&1'
+# /bin/bash -l -c 'cd /home/mouse/dev/autoscripts/shrimp_nightly_rsync; python3 shrimp_nightly_rsync.py >> logfile 2>&1'
 # This ensures that the python installation and paths are correct
 
 # Announce the start and start time
