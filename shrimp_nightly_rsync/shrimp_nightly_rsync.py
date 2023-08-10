@@ -30,7 +30,7 @@ output_dir = os.path.join(
 
 # Copy behavior
 input_dir = '/home/mouse/Videos'
-cmd = 'rsync -va --log-file=%s %s %s' % (
+cmd = 'rsync -va --no-p --log-file=%s %s %s' % (
     logfile, input_dir, output_dir)
 print("rsync : %s" % str(datetime.datetime.now()))
 print(cmd)
