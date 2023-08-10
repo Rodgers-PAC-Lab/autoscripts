@@ -1,0 +1,21 @@
+sshfs pi@192.168.11.201: /home/mouse/mnt/rpi01
+sshfs pi@192.168.11.202: /home/mouse/mnt/rpi02
+sshfs pi@192.168.11.203: /home/mouse/mnt/rpi03
+sshfs pi@192.168.11.204: /home/mouse/mnt/rpi04
+sshfs pi@192.168.11.205: /home/mouse/mnt/rpi05
+sshfs pi@192.168.11.206: /home/mouse/mnt/rpi06
+sshfs pi@192.168.11.207: /home/mouse/mnt/rpi07
+sshfs pi@192.168.11.208: /home/mouse/mnt/rpi08
+sshfs pi@192.168.11.209: /home/mouse/mnt/rpi09
+sshfs pi@192.168.11.210: /home/mouse/mnt/rpi10
+sshfs pi@192.168.11.211: /home/mouse/mnt/rpi11
+sshfs pi@192.168.11.212: /home/mouse/mnt/rpi12
+sshfs pi@192.168.11.213: /home/mouse/mnt/rpi13
+sshfs pi@192.168.11.214: /home/mouse/mnt/rpi14
+sshfs pi@192.168.11.216: /home/mouse/mnt/rpi16
+sshfs pi@192.168.11.217: /home/mouse/mnt/rpi17
+sshfs pi@192.168.11.218: /home/mouse/mnt/rpi18
+sshfs pi@192.168.11.219: /home/mouse/mnt/rpi19
+sshfs pi@192.168.11.220: /home/mouse/mnt/rpi20
+sshfs pi@192.168.11.221: /home/mouse/mnt/rpi21
+
