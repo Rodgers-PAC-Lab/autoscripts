@@ -102,9 +102,10 @@ output_dir = os.path.join(
     check_cuttlefish_mount_dir, 'from_clownfish', 'autopilot', 'terminal')
 
 # Generate the full rsync cmd
-# Don't use verbose here, because it prints every directory, I think maybe
-# because the GUI is running and touching something?
-cmd = 'rsync -a --log-file=%s --backup-dir=%s %s %s' % (
+# Use --no-p because there is something weird about the permissions
+# and if we don't ignore them, it lists every directory every time
+# It sill picks up certain hdf5 files as having changed, not sure why
+cmd = 'rsync -va --no-p --log-file=%s --backup-dir=%s %s %s' % (
     logfile, backup_dir_argument, input_dir, output_dir)
 print("rsync : %s" % str(datetime.datetime.now()))
 print(cmd)
