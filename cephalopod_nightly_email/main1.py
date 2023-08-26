@@ -78,26 +78,14 @@ for filename in os.listdir(plot_dir):
 # Each cohort will be separately plotted
 cohorts = {
     'cedric': [
-        #'Taco_Brown', 
-        'Taco_White', 
-        #'Fig_BrownSP', 'Cupcake_Brown',
-        #'Fig_Black', 'Fig_BrownLP', 'Cupcake_Black', 
-        'Carrot_White',
-        ],
-    'valentina': [
-        'Guitar_089',
-        'Watermelon_092',
-        'Watermelon_093',
-        'Watermelon_094',
-        'Kidding_Octopus_085',
-        'Kidding_Octopus_086',
-        'Kidding_Octopus_087',
-        'Butterfly_090',
-        'Butterfly_091',
-        'Party_Owl_095',
-        'Party_Owl_096',
-        'Party_Owl_097',
-        ],        
+        'Umbrella_Panda_1_Poketrain',
+        'Umbrella_Panda_2_Poketrain',
+        'Umbrella_Panda_096',
+        'Umbrella_Panda_098',
+        'Umbrella_Panda_100',
+        'Umbrella_Panda_101',
+        'Umbrella_Panda_102',        
+        ],   
     }
 
 
