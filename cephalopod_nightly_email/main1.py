@@ -47,7 +47,7 @@ toaddrs = [
     "xrodgers_cat_gmail_dog_com",
     #"eliana.pollay_cat_emory_dog_edu",
     #"valentina.esho_cat_emory_dog_edu",
-    #"cabowe_cat_emory_dog_edu",
+    "cabowe_cat_emory_dog_edu",
     #"rowan.gargiullo_cat_emory_dog_edu",
     ]
 for n in range(len(toaddrs)):
@@ -80,7 +80,7 @@ cohorts = {
     'cedric': [
         'Umbrella_Panda_1_Poketrain',
         'Umbrella_Panda_2_Poketrain',
-        'Umbrella_Panda_096',
+        'Umbrella_Panda_099',
         'Umbrella_Panda_098',
         'Umbrella_Panda_100',
         'Umbrella_Panda_101',
