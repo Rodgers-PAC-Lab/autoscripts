@@ -15,5 +15,7 @@ rclone copy --fast-list --log-file=rclone.log --log-level INFO ~/mnt/cuttlefish/
 rclone copy --fast-list --log-file=rclone.log --log-level INFO ~/mnt/cuttlefish/shared remote:emory-rodgerslab-backup-hot-20221205/shared
 rclone copy --fast-list --log-file=rclone.log --log-level INFO ~/mnt/cuttlefish/nanoz remote:emory-rodgerslab-backup-hot-20221205/nanoz
 rclone copy --fast-list --log-file=rclone.log --log-level INFO ~/mnt/cuttlefish/abr remote:emory-rodgerslab-backup-hot-20221205/abr
+rclone copy --fast-list --log-file=rclone.log --log-level INFO ~/mnt/cuttlefish/eliana remote:emory-rodgerslab-backup-hot-20221205/eliana
+rclone copy --fast-list --log-file=rclone.log --log-level INFO ~/mnt/cuttlefish/valentina remote:emory-rodgerslab-backup-hot-20221205/valentina
 echo AUTORUN_STOP_TIME `date +%F_%H-%M-%S`
 echo AUTORUN_STOP__
