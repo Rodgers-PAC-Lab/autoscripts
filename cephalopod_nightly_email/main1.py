@@ -96,7 +96,7 @@ try:
 except Exception as e:
     # Uncomment this raise for debugging
     # And also do a similar uncomment in make_all_plots
-    raise
+    # raise
     
     output_log_text = (
         "error running shared.analyze_behavior" + 
