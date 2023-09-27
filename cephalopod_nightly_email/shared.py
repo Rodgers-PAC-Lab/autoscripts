@@ -742,40 +742,46 @@ def match_videos_with_behavior(video_dir, session_df):
         ].set_index(['date', 'mouse']).sort_index()
 
     
-    ## Extract inferred camera name
-    # Extract the inferred camera name from the filename
-    aligned_videos_df['inferred_camera_name'] = (
-        aligned_videos_df['video_filename'].apply(
-        lambda s: s[:7] if not pandas.isnull(s) else ''))
+    ## If there are duplicate sessions by day, the rest won't work
+    if aligned_videos_df.index.duplicated().any():
+        output_txt += (
+            "error: cannot check for missing video if there are "
+            "duplicated sessions\n")
+    else:    
+        ## Extract inferred camera name
+        # Extract the inferred camera name from the filename
+        aligned_videos_df['inferred_camera_name'] = (
+            aligned_videos_df['video_filename'].apply(
+            lambda s: s[:7] if not pandas.isnull(s) else ''))
 
-    # Ensure these match
-    mistaken_cameras_mask = (
-        aligned_videos_df['camera_name'] != 
-        aligned_videos_df['inferred_camera_name'])
-    mistaken_cameras_sessions = aligned_videos_df.loc[
-        mistaken_cameras_mask.values]
-    mistaken_cameras_sessions = mistaken_cameras_sessions[
-        ~mistaken_cameras_sessions['video_filename'].isnull()]
-    if len(mistaken_cameras_sessions) > 0:
-        output_txt += ("warning: some cameras were mis-inferred:\n")
-        output_txt += ("{}\n\n".format(
-            str(mistaken_cameras_sessions[['video_filename', 'camera_name']])
-            ))
+        # Ensure these match
+        mistaken_cameras_mask = (
+            aligned_videos_df['camera_name'] != 
+            aligned_videos_df['inferred_camera_name'])
+        mistaken_cameras_sessions = aligned_videos_df.loc[
+            mistaken_cameras_mask.values]
+        mistaken_cameras_sessions = mistaken_cameras_sessions[
+            ~mistaken_cameras_sessions['video_filename'].isnull()]
+        if len(mistaken_cameras_sessions) > 0:
+            output_txt += ("warning: some cameras were mis-inferred:\n")
+            output_txt += ("{}\n\n".format(
+                str(mistaken_cameras_sessions[['video_filename', 'camera_name']])
+                ))
 
 
-    ## Identify sessions with missing video
-    # Identify sessions where the video is missing
-    # Ignore ones from today because they haven't been uploaded yet
-    to_check = aligned_videos_df.drop(datetime.date.today(), errors='ignore')
-    sessions_missing_video = to_check.loc[
-        aligned_videos_df['video_filename'].isnull()]
-    if len(sessions_missing_video) > 0:
-        output_txt += ("warning: {}/{} sessions are missing video\n".format(
-            len(sessions_missing_video),
-            len(aligned_videos_df),
-            ))
-        output_txt += str(
-            sessions_missing_video[['session_name', 'camera_name']])
-        output_txt += "\n\n"
+        ## Identify sessions with missing video
+        # Identify sessions where the video is missing
+        # Ignore ones from today because they haven't been uploaded yet
+        to_check = aligned_videos_df.drop(datetime.date.today(), errors='ignore')
+        sessions_missing_video = to_check.loc[
+            aligned_videos_df['video_filename'].isnull()]
+        if len(sessions_missing_video) > 0:
+            output_txt += ("warning: {}/{} sessions are missing video\n".format(
+                len(sessions_missing_video),
+                len(aligned_videos_df),
+                ))
+            output_txt += str(
+                sessions_missing_video[['session_name', 'camera_name']])
+            output_txt += "\n\n"
     
     return aligned_videos_df, output_txt
