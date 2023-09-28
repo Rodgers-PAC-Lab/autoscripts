@@ -46,9 +46,10 @@ DRY_RUN = False
 toaddrs = [
     "xrodgers_cat_gmail_dog_com",
     #"eliana.pollay_cat_emory_dog_edu",
-    #"valentina.esho_cat_emory_dog_edu",
+    "valentina.esho_cat_emory_dog_edu",
     "cabowe_cat_emory_dog_edu",
     #"rowan.gargiullo_cat_emory_dog_edu",
+    'abigail.mcelroy_cat_emory_dog_edu',
     ]
 for n in range(len(toaddrs)):
     toaddrs[n] = toaddrs[n].replace('_cat_', '@').replace('_dog_', '.')
@@ -86,6 +87,10 @@ cohorts = {
         'Umbrella_Panda_101',
         'Umbrella_Panda_102',        
         ],   
+    'abigail': [
+        'Watermelon_094',
+        'Butterfly_090',
+        ],
     }
 
 
