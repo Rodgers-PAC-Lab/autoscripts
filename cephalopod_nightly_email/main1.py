@@ -87,9 +87,23 @@ cohorts = {
         'Umbrella_Panda_101',
         'Umbrella_Panda_102',        
         ],   
-    'abigail': [
+    'abigail_old': [
         'Watermelon_094',
         'Butterfly_090',
+        'Kidding_Octopus_085',
+        'Kidding_Octopus_086',
+        'Kidding_Octopus_087',
+        'Party_Owl_095',
+        ],
+    'abigail_new': [
+        'Snail_103',
+        'Snail_104',
+        'Moon_Flask_105',
+        'Moon_Flask_106',
+        'Seahorse_107',
+        'Seahorse_108',
+        'Rocketship_109',
+        'Rocketship_110',
         ],
     }
 
