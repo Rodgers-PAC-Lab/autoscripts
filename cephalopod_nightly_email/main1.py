@@ -1,4 +1,6 @@
 ## Run a behavioral report
+# For whatever reason, cannot import weasyprint in pylab mode
+#
 # Make plots of each cohort of mice, and capture errors/warnings
 # Check for missing sessions
 # Grab the pandoc error messages from clownfish
@@ -41,7 +43,7 @@ import socks
 
 
 ## Set up for email
-DRY_RUN = False
+DRY_RUN = True
 
 toaddrs = [
     "xrodgers_cat_gmail_dog_com",
@@ -59,9 +61,9 @@ for n in range(len(toaddrs)):
 text_results = []
 text_results.append('Behavior report: ' + str(datetime.datetime.now()))
 
-
-# The day to analyze
-target_date = (datetime.datetime.now() - datetime.timedelta(days=1)).date()
+# The day to analyze (today)
+# For debugging, sometimes we set this to yesterday to grab yesterday's results
+target_date = datetime.datetime.now().date()
 text_results.append("Target date: %s" % str(target_date))
 
 
@@ -115,7 +117,7 @@ try:
 except Exception as e:
     # Uncomment this raise for debugging
     # And also do a similar uncomment in make_all_plots
-    # raise
+    raise
     
     output_log_text = (
         "error running shared.analyze_behavior" + 
@@ -148,38 +150,46 @@ else:
 
 
 ## Find a markdown summary of today's behavior
+# Get a list of all summary files
 ablp_dir = os.path.expanduser(
     '~/mnt/cuttlefish/behavior/archived_behavioral_log_parsing/summary')
 log_parsing_filenames = os.listdir(ablp_dir)
-yesterday_dt = datetime.datetime.now() - datetime.timedelta(days=0)
-todays_date = yesterday_dt.strftime('%Y-%m-%d')
+
+# Find the one(s) that start with today's date (the target date)
 todays_log_parsing_results_l = [
-    s for s in log_parsing_filenames if s.startswith(str(todays_date))]
-# TODO: rewrite above to replace todays_date with target_date
+    s for s in log_parsing_filenames if s.startswith(str(target_date))]
 
-if len(todays_log_parsing_results_l) == 1:
-    todays_log_parsing_results = todays_log_parsing_results_l[0]
+# Write out the results from each log
+if len(todays_log_parsing_results_l) == 0:
+    # No logs available
+    text_results.append('warning: no log parsing results for today\n')
+
 else:
-    todays_log_parsing_results = None
+    # One or more logs available, iterate over them
+    for lpr in todays_log_parsing_results_l:
+        # Read it
+        full_filename = os.path.join(ablp_dir, lpr)
+        text_results.append('logfile {}\n follows'.format(lpr))
+        text_results.append('---\n')
 
-if todays_log_parsing_results is not None:
-    # Read it
-    # TODO: parse this to PDF
-    full_filename = os.path.join(ablp_dir, todays_log_parsing_results)
-    with open(full_filename) as fi:
-        todays_markdown = fi.readlines()
-    todays_markdown = '\n'.join(todays_markdown)
+        # TODO: use pandoc to render this markdown more nicely
+        # For now, just print the markdown
+        with open(full_filename) as fi:
+            todays_markdown = fi.readlines()
+        todays_markdown_s = ''.join(todays_markdown)
 
-    text_results.append(todays_markdown)
-else:
-    text_results.append('Non-unique log parsing results: {}\n'.format(
-        todays_log_parsing_results_l))
+        # Append to text results
+        text_results.append(todays_markdown_s)
 
 
 ## Text results to pdf
+# TODO: Instead of forcing this through html, which looks ugly, use pandoc
+# to convert markdown directly to pdf
 # Text results to pdf
-html_text = '<pre><span class="inner-pre" style="font-size: 11px">' + \
+html_text = (
+    '<pre><span class="inner-pre" style="font-size: 7px">' + 
     "\n".join(text_results).replace("\n", "\r\n") + "</pre>"
+    )
 html = weasyprint.HTML(string=html_text)
 html.write_pdf('text.pdf')
 

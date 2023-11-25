@@ -83,8 +83,9 @@ def analyze_behavior(plot_dir, cohorts):
         '~/mnt/cuttlefish/behavior/videos/e3vision/Videos')
     
     # Align
-    aligned_videos_df, aligned_videos_error_log = match_videos_with_behavior(
-        video_dir, session_df)
+    aligned_videos_df, aligned_videos_error_log = (
+        paclab.behavior.match_videos_with_behavior(
+        video_dir, session_df))
     
     # Append error text
     output_log_text += aligned_videos_error_log
@@ -336,7 +337,6 @@ def plot_rcp_and_fc(perf_by_mouse_and_date, task2mouse, mouse_names):
     # Center the ticks
     for tick in axa[2].xaxis.get_major_ticks():
         tick.label1.set_horizontalalignment('center')
-        tick.label1.set_rotation('center')
         tick.label1.set_rotation(90)
     
     return f
