@@ -81,22 +81,12 @@ for filename in os.listdir(plot_dir):
 # Each cohort will be separately plotted
 cohorts = {
     'cedric': [
-        'Umbrella_Panda_1_Poketrain',
-        'Umbrella_Panda_2_Poketrain',
         'Umbrella_Panda_099',
         'Umbrella_Panda_098',
         'Umbrella_Panda_100',
         'Umbrella_Panda_101',
         'Umbrella_Panda_102',        
         ],   
-    'abigail_old': [
-        'Watermelon_094',
-        'Butterfly_090',
-        'Kidding_Octopus_085',
-        'Kidding_Octopus_086',
-        'Kidding_Octopus_087',
-        'Party_Owl_095',
-        ],
     'abigail_new': [
         'Snail_103',
         'Snail_104',
@@ -169,7 +159,7 @@ else:
     for lpr in todays_log_parsing_results_l:
         # Read it
         full_filename = os.path.join(ablp_dir, lpr)
-        text_results.append('logfile {}\n follows'.format(lpr))
+        text_results.append('logfile {} follows\n'.format(lpr))
         text_results.append('---\n')
 
         # TODO: use pandoc to render this markdown more nicely
