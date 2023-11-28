@@ -43,7 +43,7 @@ import socks
 
 
 ## Set up for email
-DRY_RUN = True
+DRY_RUN = False
 
 toaddrs = [
     "xrodgers_cat_gmail_dog_com",
@@ -107,7 +107,7 @@ try:
 except Exception as e:
     # Uncomment this raise for debugging
     # And also do a similar uncomment in make_all_plots
-    raise
+    #raise
     
     output_log_text = (
         "error running shared.analyze_behavior" + 

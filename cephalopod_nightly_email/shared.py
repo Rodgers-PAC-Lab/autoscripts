@@ -206,7 +206,7 @@ def make_all_plots(
     
     except Exception as e:
         # Uncomment this raise for debugging
-        raise
+        #raise
         
         output_log_txt += (
             "error making plots" + 
