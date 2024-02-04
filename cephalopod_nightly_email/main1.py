@@ -48,10 +48,11 @@ DRY_RUN = False
 toaddrs = [
     "xrodgers_cat_gmail_dog_com",
     #"eliana.pollay_cat_emory_dog_edu",
-    "valentina.esho_cat_emory_dog_edu",
+    #"valentina.esho_cat_emory_dog_edu",
     "cabowe_cat_emory_dog_edu",
     #"rowan.gargiullo_cat_emory_dog_edu",
     'abigail.mcelroy_cat_emory_dog_edu',
+    'karinne.cobb_cat_emory_dog_edu',
     ]
 for n in range(len(toaddrs)):
     toaddrs[n] = toaddrs[n].replace('_cat_', '@').replace('_dog_', '.')
@@ -80,24 +81,39 @@ for filename in os.listdir(plot_dir):
 ## Define cohorts of mice
 # Each cohort will be separately plotted
 cohorts = {
-    'cedric': [
-        'Umbrella_Panda_099',
-        'Umbrella_Panda_098',
-        'Umbrella_Panda_100',
-        'Umbrella_Panda_101',
-        'Umbrella_Panda_102',        
-        ],   
-    'abigail_new': [
-        'Snail_103',
-        'Snail_104',
-        'Moon_Flask_105',
-        'Moon_Flask_106',
-        'Seahorse_107',
-        'Seahorse_108',
-        'Rocketship_109',
-        'Rocketship_110',
-        ],
-    }
+    #~ 'karinne': [
+        #~ 'Pufferfish_gpoketrain',
+        #~ 'Witch_Owl_gpoketrain',
+        #~ 'Kangaroo_gpoketrain',
+        #~ 'Cowboy_Bear_gpoketrain',
+        #~ 'Satellite_gpoketrain',
+        #~ 'Train_gpoketrain',
+        #~ 'Raincloud_gpoketrain',
+        #~ 'Jacket_gpoketrain',
+        #~ ],   
+    'karinne_AD': [
+        'Satellite_116',
+        'Satellite_117',
+        'Jacket_114',
+        'Jacket_115',
+        'Raincloud_120',
+        'Raincloud_121',
+        'Witch_Owl_127',
+        'Witch_Owl_128',
+    ],
+    'karinne_WT': [
+        'Kangaroo_122',
+        'Kangaroo_123',
+        'Cowboy_Bear_118',
+        'Cowboy_Bear_119',
+        'Pufferfish_124',
+        'Pufferfish_125',
+        'Pufferfish_126',
+        'Train_111',
+        'Train_112',
+        'Train_113',
+    ]
+}
 
 
 ## Analyze behavior
