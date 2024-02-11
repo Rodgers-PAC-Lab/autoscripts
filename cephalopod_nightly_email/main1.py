@@ -52,7 +52,7 @@ toaddrs = [
     "cabowe_cat_emory_dog_edu",
     #"rowan.gargiullo_cat_emory_dog_edu",
     'abigail.mcelroy_cat_emory_dog_edu',
-    'karinne.cobb_cat_emory_dog_edu',
+    #'karinne.cobb_cat_emory_dog_edu',
     ]
 for n in range(len(toaddrs)):
     toaddrs[n] = toaddrs[n].replace('_cat_', '@').replace('_dog_', '.')
@@ -91,17 +91,17 @@ cohorts = {
         #~ 'Raincloud_gpoketrain',
         #~ 'Jacket_gpoketrain',
         #~ ],   
-    'karinne_AD': [
-        'Satellite_116',
-        'Satellite_117',
+    'karinne_WT': [
         'Jacket_114',
         'Jacket_115',
-        'Raincloud_120',
-        'Raincloud_121',
         'Witch_Owl_127',
         'Witch_Owl_128',
     ],
-    'karinne_WT': [
+    'karinne_AD': [
+        'Satellite_116',
+        'Satellite_117',
+        'Raincloud_120',
+        'Raincloud_121',
         'Kangaroo_122',
         'Kangaroo_123',
         'Cowboy_Bear_118',
