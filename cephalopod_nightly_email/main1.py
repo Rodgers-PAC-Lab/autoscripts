@@ -49,9 +49,10 @@ toaddrs = [
     "xrodgers_cat_gmail_dog_com",
     #"eliana.pollay_cat_emory_dog_edu",
     #"valentina.esho_cat_emory_dog_edu",
-    "cabowe_cat_emory_dog_edu",
+    #"cabowe_cat_emory_dog_edu",
     #"rowan.gargiullo_cat_emory_dog_edu",
     'abigail.mcelroy_cat_emory_dog_edu',
+    'kai.park_cat_emory_dog_edu',
     #'karinne.cobb_cat_emory_dog_edu',
     ]
 for n in range(len(toaddrs)):
@@ -97,22 +98,22 @@ cohorts = {
         'Witch_Owl_127',
         'Witch_Owl_128',
     ],
-    'karinne_AD': [
-        'Satellite_116',
-        'Satellite_117',
-        'Raincloud_120',
-        'Raincloud_121',
-        'Kangaroo_122',
-        'Kangaroo_123',
-        'Cowboy_Bear_118',
-        'Cowboy_Bear_119',
-        'Pufferfish_124',
-        'Pufferfish_125',
-        'Pufferfish_126',
-        'Train_111',
-        'Train_112',
-        'Train_113',
-    ]
+    #~ 'karinne_AD': [
+        #~ 'Satellite_116',
+        #~ 'Satellite_117',
+        #~ 'Raincloud_120',
+        #~ 'Raincloud_121',
+        #~ 'Kangaroo_122',
+        #~ 'Kangaroo_123',
+        #~ 'Cowboy_Bear_118',
+        #~ 'Cowboy_Bear_119',
+        #~ 'Pufferfish_124',
+        #~ 'Pufferfish_125',
+        #~ 'Pufferfish_126',
+        #~ 'Train_111',
+        #~ 'Train_112',
+        #~ 'Train_113',
+    #~ ]
 }
 
 
