@@ -2,7 +2,7 @@
 # Checks disk usage and kills watchtower if it exceeds some value
 #
 # Run like this:
-# /bin/bash -l -c 'cd /home/mouse/dev/autoscripts/jellyfish_df_monitor; python jellyfish_df_monitor.py >> logfile 2>&1'
+# /bin/bash -l -c 'cd /home/mouse/dev/autoscripts/jellyfish_df_monitor; python3 jellyfish_df_monitor.py >> logfile 2>&1'
 # This ensures that the python installation and paths are correct
 
 # Announce the start and start time
@@ -43,7 +43,7 @@ if pct_used_f is None:
 # Kill if over threshold
 if pct_used_f >= threshold:
     print('killing')
-    kill_proc = subprocess.run(['killall', 'xed'], capture_output=True)
+    kill_proc = subprocess.run(['killall', 'e3v-watchtower'], capture_output=True)
     if kill_proc.returncode == 0:
         print('successful kill')
     else:
