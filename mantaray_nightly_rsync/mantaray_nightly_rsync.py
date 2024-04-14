@@ -28,9 +28,11 @@ if not os.path.ismount(check_cuttlefish_mount_dir):
 output_dir = os.path.join(
     check_cuttlefish_mount_dir, 'surgery')
 
-# Set up rsync command
-input_dir = '"/home/mouse/Surgery Pictures"'
-cmd = 'rsync -va --log-file=%s %s %s' % (
+# Generate the full rsync cmd
+# Use --no-p because there is something weird about the permissions
+# and if we don't ignore them, it lists every directory every time
+input_dir = '/home/mouse/Surgery Pictures'
+cmd = 'rsync -va --no-p --log-file=%s %s %s' % (
     logfile, input_dir, output_dir)
 print("rsync : %s" % str(datetime.datetime.now()))
 print(cmd)
