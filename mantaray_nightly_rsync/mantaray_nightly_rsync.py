@@ -18,7 +18,7 @@ import sys
 # rsync will be called with this logfile
 logfile = 'nightly_rsync.log'
 
-# rsync -va /home/mouse/Pictures /home/mouse/mnt/cuttlefish/surgery
+# rsync -va /home/mouse/Surgery\ Pictures /home/mouse/mnt/cuttlefish/surgery
 # Check that it's actually mounted before running
 check_cuttlefish_mount_dir = '/home/mouse/mnt/cuttlefish'
 if not os.path.ismount(check_cuttlefish_mount_dir):
@@ -29,7 +29,7 @@ output_dir = os.path.join(
     check_cuttlefish_mount_dir, 'surgery')
 
 # Set up rsync command
-input_dir = '/home/mouse/Pictures'
+input_dir = '"/home/mouse/Surgery Pictures"'
 cmd = 'rsync -va --log-file=%s %s %s' % (
     logfile, input_dir, output_dir)
 print("rsync : %s" % str(datetime.datetime.now()))
