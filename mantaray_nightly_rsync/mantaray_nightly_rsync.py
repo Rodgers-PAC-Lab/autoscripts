@@ -31,7 +31,7 @@ output_dir = os.path.join(
 # Generate the full rsync cmd
 # Use --no-p because there is something weird about the permissions
 # and if we don't ignore them, it lists every directory every time
-input_dir = '/home/mouse/Surgery Pictures'
+input_dir = '"/home/mouse/Surgery Pictures"'
 cmd = 'rsync -va --no-p --log-file=%s %s %s' % (
     logfile, input_dir, output_dir)
 print("rsync : %s" % str(datetime.datetime.now()))
