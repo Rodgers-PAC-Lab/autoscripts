@@ -49,10 +49,10 @@ toaddrs = [
     "xrodgers_cat_gmail_dog_com",
     #"eliana.pollay_cat_emory_dog_edu",
     #"valentina.esho_cat_emory_dog_edu",
-    #"cabowe_cat_emory_dog_edu",
+    "cabowe_cat_emory_dog_edu",
     #"rowan.gargiullo_cat_emory_dog_edu",
-    'abigail.mcelroy_cat_emory_dog_edu',
-    'kai.park_cat_emory_dog_edu',
+    #'abigail.mcelroy_cat_emory_dog_edu',
+    #'kai.park_cat_emory_dog_edu',
     #'karinne.cobb_cat_emory_dog_edu',
     ]
 for n in range(len(toaddrs)):
@@ -82,38 +82,21 @@ for filename in os.listdir(plot_dir):
 ## Define cohorts of mice
 # Each cohort will be separately plotted
 cohorts = {
-    #~ 'karinne': [
-        #~ 'Pufferfish_gpoketrain',
-        #~ 'Witch_Owl_gpoketrain',
-        #~ 'Kangaroo_gpoketrain',
-        #~ 'Cowboy_Bear_gpoketrain',
-        #~ 'Satellite_gpoketrain',
-        #~ 'Train_gpoketrain',
-        #~ 'Raincloud_gpoketrain',
-        #~ 'Jacket_gpoketrain',
-        #~ ],   
-    'karinne_WT': [
-        'Jacket_114',
-        'Jacket_115',
-        'Witch_Owl_127',
-        'Witch_Owl_128',
+    'cedric1': [
+    'Tiger_142',
+    'Tiger_143',
+    'TeacupDog_140',
+    'TeacupDog_139',
+    'TeacupDog_141',
     ],
-    #~ 'karinne_AD': [
-        #~ 'Satellite_116',
-        #~ 'Satellite_117',
-        #~ 'Raincloud_120',
-        #~ 'Raincloud_121',
-        #~ 'Kangaroo_122',
-        #~ 'Kangaroo_123',
-        #~ 'Cowboy_Bear_118',
-        #~ 'Cowboy_Bear_119',
-        #~ 'Pufferfish_124',
-        #~ 'Pufferfish_125',
-        #~ 'Pufferfish_126',
-        #~ 'Train_111',
-        #~ 'Train_112',
-        #~ 'Train_113',
-    #~ ]
+    'cedric2': [
+    'Koala_145',
+    'Koala_144',
+    'SmoothieDog_138',
+    'SmoothieDog_136',
+    'SmoothieDog_137',
+    'SmoothieDog_135',
+    ],
 }
 
 
