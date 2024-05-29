@@ -55,10 +55,9 @@ def analyze_behavior(plot_dir, cohorts):
     parsed_results = paclab.parse.parse_sandboxes(
         path_to_terminal_data, 
         mouse_names=mouse_names,
-        rename_sessions_l=rename_sessions_l,
         munged_sessions=munged_sessions,
         protocol_name=None, # all protocols, including poke train
-        quiet=True,
+        quiet=False,
         )
 
     # Extract the parsed_results into their own variables
