@@ -51,8 +51,9 @@ toaddrs = [
     #"valentina.esho_cat_emory_dog_edu",
     "cabowe_cat_emory_dog_edu",
     #"rowan.gargiullo_cat_emory_dog_edu",
-    #'abigail.mcelroy_cat_emory_dog_edu',
-    #'kai.park_cat_emory_dog_edu',
+    'abigail.mcelroy_cat_emory_dog_edu',
+    'kai.park_cat_emory_dog_edu',
+    'hansu.chung_cat_emory_dog_edu',
     #'karinne.cobb_cat_emory_dog_edu',
     ]
 for n in range(len(toaddrs)):
