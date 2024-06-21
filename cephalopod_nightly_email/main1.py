@@ -98,6 +98,26 @@ cohorts = {
     'SmoothieDog_137',
     'SmoothieDog_135',
     ],
+    'abigail': [
+        'Hot_Dog_148',
+        'Hot_Dog_149',
+        'Seal_150',
+        'Seal_151',
+        'Tractor_146',
+        'Tractor_147',
+        'Goat_152',
+        'Goat_153',
+    ],
+    'joe': [
+        'Llama_156',
+        'Llama_157',
+        'Parrot_164',
+        'Parrot_165',
+        'Chameleon_162',
+        'Chameleon_163',
+        'Lemon_154',
+        'Lemon_155',
+    ],    
 }
 
 
