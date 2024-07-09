@@ -118,11 +118,17 @@ cohorts = {
         'Lemon_154',
         'Lemon_155',
     ],    
-    'kai': [
+    'kai1': [
         'Lion_158',
         'Lion_159',
         'Sun_160',
         'Sun_161',
+    ],
+    'kai2': [
+        'Beer_168', 
+        'Beer_169', 
+        'Siamese_166',
+        'Siamese_167',
     ],
 }
 
