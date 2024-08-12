@@ -42,10 +42,12 @@ if not os.path.ismount(mount_dir):
 # heroku is set to perform a pg:backup every day at 11PM
 # Confirm this with: heroku pg:backups:schedules --app paclab-krill
 # this script runs a few hours later so it should pull the latest version
+# 2024-08-10: updated to use backups:url instead of --public-url
+#   Also put everything in quotes in case of error message
 backup_path = os.path.join(backups_dir, 'krill')
 backup_file = datetime.date.today().strftime('%Y-%m-%d')
 backup_full_file = os.path.join(backup_path, backup_file + '.dump')
-cmd = 'curl -o %s `heroku pg:backups public-url --app paclab-krill`' % backup_full_file
+cmd = 'curl -o %s "`heroku pg:backups:url --app paclab-krill`"' % backup_full_file
 print("\n# Dumping paclab-krill to pgdump")
 print(cmd)
 os.system(cmd)
