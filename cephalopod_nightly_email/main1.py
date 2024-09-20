@@ -83,47 +83,18 @@ for filename in os.listdir(plot_dir):
 ## Define cohorts of mice
 # Each cohort will be separately plotted
 cohorts = {
-    'cedric1': [
-    'Tiger_142',
-    'Tiger_143',
-    'TeacupDog_140',
-    'TeacupDog_139',
-    'TeacupDog_141',
-    ],
-    'cedric2': [
-    'Koala_145',
-    'Koala_144',
-    'SmoothieDog_138',
-    'SmoothieDog_136',
-    'SmoothieDog_137',
-    'SmoothieDog_135',
-    ],
     'abigail': [
-        'Hot_Dog_148',
-        'Hot_Dog_149',
-        'Seal_150',
-        'Seal_151',
         'Tractor_146',
         'Tractor_147',
         'Goat_152',
         'Goat_153',
     ],
     'joe': [
-        'Llama_156',
-        'Llama_157',
         'Parrot_164',
         'Parrot_165',
         'Chameleon_162',
         'Chameleon_163',
-        'Lemon_154',
-        'Lemon_155',
     ],    
-    'kai1': [
-        'Lion_158',
-        'Lion_159',
-        'Sun_160',
-        'Sun_161',
-    ],
     'kai2': [
         'Beer_168', 
         'Beer_169', 
