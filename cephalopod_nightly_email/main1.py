@@ -95,12 +95,6 @@ cohorts = {
         'Chameleon_162',
         'Chameleon_163',
     ],    
-    'kai2': [
-        'Beer_168', 
-        'Beer_169', 
-        'Siamese_166',
-        'Siamese_167',
-    ],
 }
 
 
