@@ -21,9 +21,14 @@ logfile = 'nightly_rsync.log'
 
 
 ## Check that cuttlefish is actually mounted before running
-check_cuttlefish_mount_dir = '/home/mouse/mnt/cuttlefish'
+check_cuttlefish_mount_dir = '/home/mouse/mnt/cuttlefish2'
 if not os.path.ismount(check_cuttlefish_mount_dir):
     raise IOError("This must be mounted: %s" % check_cuttlefish_mount_dir)
+
+# Check this exists
+cuttlefish_behavior_home = os.path.join(check_cuttlefish_mount_dir, 'behavior')
+if not os.path.exists(cuttlefish_behavior_home):
+    raise IOError("This must exist: %s" % cuttlefish_behavior_home)
 
 
 ## Run the rsync for octopilot
@@ -37,7 +42,7 @@ input_dir = '/home/mouse/octopilot'
 
 # This is where output goes
 output_dir = os.path.join(
-    check_cuttlefish_mount_dir, 'from_clownfish')
+    cuttlefish_behavior_home, 'from_clownfish')
 
 # Generate the full rsync cmd
 # Use --no-p because there is something weird about the permissions
