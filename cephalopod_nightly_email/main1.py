@@ -95,6 +95,19 @@ cohorts = {
         'Chameleon_162',
         'Chameleon_163',
     ],    
+    'cedric': [
+        'Tiger_142', 
+        'Tiger_143', 
+        'Koala_145', 
+        'Koala_144', 
+        'SmoothieDog_138', 
+        'SmoothieDog_136', 
+        'SmoothieDog_137', 
+        'SmoothieDog_135', 
+        'TeacupDog_140', 
+        'TeacupDog_139', 
+        'TeacupDog_141',
+    ],
 }
 
 
