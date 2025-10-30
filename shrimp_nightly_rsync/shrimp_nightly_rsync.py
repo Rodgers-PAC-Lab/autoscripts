@@ -20,16 +20,25 @@ logfile = 'nightly_rsync.log'
 
 # rsync -va /media/mouse/windows/Users/mouse/Videos /home/mouse/mnt/cuttlefish/behavior/videos/e3vision
 # Check that it's actually mounted before running
-check_cuttlefish_mount_dir = '/home/mouse/mnt/cuttlefish'
+check_cuttlefish_mount_dir = '/home/mouse/mnt/shrimpX'
 if not os.path.ismount(check_cuttlefish_mount_dir):
     raise IOError("This must be mounted: %s" % check_cuttlefish_mount_dir)
 
 # This is where output goes
-output_dir = os.path.join(
-    check_cuttlefish_mount_dir, 'shrimp')
+output_dir = check_cuttlefish_mount_dir
+
+# Copy videos
+input_dir = '/home/mouse/Videos'
+cmd = 'rsync -va --no-p --log-file=%s %s %s' % (
+    logfile, input_dir, output_dir)
+print("rsync : %s" % str(datetime.datetime.now()))
+print(cmd)
+sys.stdout.flush() # to maintain the order of print and os.system in the logfile
+os.system(cmd)
 
 # Copy behavior
-input_dir = '/home/mouse/Videos'
+input_dir = '/home/mouse/octopilot'
+output_dir = '/home/mouse/mnt/cuttlefish/shrimp'
 cmd = 'rsync -va --no-p --log-file=%s %s %s' % (
     logfile, input_dir, output_dir)
 print("rsync : %s" % str(datetime.datetime.now()))
