@@ -53,7 +53,7 @@ def run_rsync(input_dir, output_dir):
 
 
 ## Copy ~/open-ephys to ~/mnt/cuttlefish/shrimp
-input_dir = '/home/mouse/octopilot'
+input_dir = '/home/mouse/open-ephys'
 output_dir = '/home/mouse/mnt/cuttlefish/shrimp'
 run_rsync(input_dir, output_dir)
 
