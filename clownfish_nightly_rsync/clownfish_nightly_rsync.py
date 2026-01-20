@@ -21,7 +21,7 @@ logfile = 'nightly_rsync.log'
 
 
 ## Check that cuttlefish is actually mounted before running
-check_cuttlefish_mount_dir = '/home/mouse/mnt/cuttlefish2'
+check_cuttlefish_mount_dir = '/home/mouse/mnt/cuttlefish'
 if not os.path.ismount(check_cuttlefish_mount_dir):
     raise IOError("This must be mounted: %s" % check_cuttlefish_mount_dir)
 
