@@ -25,6 +25,7 @@ rclone copy --fast-list --log-file=rclone.log --log-level INFO --stats-one-line 
 rclone copy --fast-list --log-file=rclone.log --log-level INFO --stats-one-line --multi-thread-streams 0 ~/mnt/cuttlefish/rowan remote:emory-rodgerslab-backup-hot-20221205/rowan
 rclone copy --fast-list --log-file=rclone.log --log-level INFO --stats-one-line --multi-thread-streams 0 ~/mnt/cuttlefish/shared remote:emory-rodgerslab-backup-hot-20221205/shared
 #rclone copy --fast-list --log-file=rclone.log --log-level INFO --stats-one-line --multi-thread-streams 0 ~/mnt/cuttlefish/shrimp remote:emory-rodgerslab-backup-hot-20221205/shrimp
+#rclone copy --fast-list --log-file=rclone.log --log-level INFO --stats-one-line --multi-thread-streams 0 ~/mnt/shrimpX/Videos remote:emory-rodgerslab-backup-hot-20221205/shrimpX/Videos
 rclone copy --fast-list --log-file=rclone.log --log-level INFO --stats-one-line --multi-thread-streams 0 ~/mnt/cuttlefish/sukrith remote:emory-rodgerslab-backup-hot-20221205/sukrith
 rclone copy --fast-list --log-file=rclone.log --log-level INFO --stats-one-line --multi-thread-streams 0 ~/mnt/cuttlefish/surgery remote:emory-rodgerslab-backup-hot-20221205/surgery
 #rclone copy --fast-list --log-file=rclone.log --log-level INFO --stats-one-line --multi-thread-streams 0 ~/mnt/cuttlefish/valentina remote:emory-rodgerslab-backup-hot-20221205/valentina
