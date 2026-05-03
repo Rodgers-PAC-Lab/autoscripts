@@ -23,7 +23,6 @@ LOG_FILE="/volume1/homes/chris/rclone_backup.log"
 #   --log-level INFO      : log informational messages (transfers, skips)
 #   --stats-one-line      : print transfer statistics on a single line
 RCLONE_OPTS=(
-    --dry-run
     --skip-links
     --exclude="@eaDir/**"
     --modify-window=1ms
