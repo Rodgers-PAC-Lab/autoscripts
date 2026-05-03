@@ -165,8 +165,6 @@ for SRC in "${BACKUP[@]}"; do
         echo "ERROR: rclone failed for $SRC"
         FAILED+=("$SRC")
     fi
-
-	exit 1
 done
 
 if (( ${#FAILED[@]} > 0 )); then
