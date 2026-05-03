@@ -23,9 +23,10 @@ LOG_FILE="/volume1/homes/chris/rclone_backup.log"
 #   --log-level INFO      : log informational messages (transfers, skips)
 #   --stats-one-line      : print transfer statistics on a single line
 RCLONE_OPTS=(
+    --dry-run
     --skip-links
     --exclude="@eaDir/**"
-    --modify-window 1ms
+    --modify-window=1ms
     --fast-list
     --log-file="$LOG_FILE"
     --log-level=INFO
@@ -134,6 +135,9 @@ for ROOT in "${SCAN_ROOTS[@]}"; do
     done
 done
 
+echo "The following directories will be backed up:"
+printf '%s\n' "${BACKUP[@]}"
+
 # -- Run backups ----------------------------------------------------------------
 
 # Sentinel lines make it easy to grep the cron log for run boundaries and timing
@@ -157,10 +161,12 @@ for SRC in "${BACKUP[@]}"; do
     echo "    rclone copy ${RCLONE_OPTS[@]} $SRC $REMOTE/$NAME"
 
     # Block comment this section to skip any actual rclone calls
-    #~ if ! rclone copy "${RCLONE_OPTS[@]}" "$SRC" "$REMOTE/$NAME"; then
-        #~ echo "ERROR: rclone failed for $SRC"
-        #~ FAILED+=("$SRC")
-    #~ fi
+    if ! rclone copy "${RCLONE_OPTS[@]}" "$SRC" "$REMOTE/$NAME"; then
+        echo "ERROR: rclone failed for $SRC"
+        FAILED+=("$SRC")
+    fi
+
+	exit 1
 done
 
 if (( ${#FAILED[@]} > 0 )); then
