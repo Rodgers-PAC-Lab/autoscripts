@@ -25,6 +25,9 @@ LOG_FILE="/volume1/homes/chris/rclone_backup.log"
 RCLONE_OPTS=(
     --skip-links
     --exclude="@eaDir/**"
+    --exclude="@eaDir/"
+    --exclude=".phy/**"
+    --exclude=".phy/"
     --modify-window=1ms
     --fast-list
     --log-file="$LOG_FILE"
