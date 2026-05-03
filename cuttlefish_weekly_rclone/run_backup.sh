@@ -24,6 +24,7 @@ LOG_FILE="/volume1/homes/chris/rclone_backup.log"
 #   --stats-one-line      : print transfer statistics on a single line
 RCLONE_OPTS=(
 	--skip-links
+	--checkers=100
 	--exclude="@eaDir/**"
 	--exclude="@eaDir/"
 	--exclude=".phy/**"
