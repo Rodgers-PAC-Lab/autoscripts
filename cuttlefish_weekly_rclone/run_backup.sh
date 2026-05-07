@@ -4,6 +4,10 @@ set -u  # treat unset variable references as errors
 
 # set -e is omitted so that the script continues even if one rclone call fails
 
+# This way, when user hits CTRL+C, the whole script ends, not just the
+# current rclone
+trap 'echo "Interrupted"; exit 1' INT
+
 REMOTE="remote:emory-rodgerslab-backup-hot-20221205"
 
 # Absolute path so cron writes the log somewhere predictable regardless of
@@ -29,6 +33,7 @@ RCLONE_OPTS=(
 	--exclude="@eaDir/"
 	--exclude=".phy/**"
 	--exclude=".phy/"
+	--exclude="rclone_backup.log"
 	--modify-window=1ms
 	--fast-list
 	--log-file="$LOG_FILE"
