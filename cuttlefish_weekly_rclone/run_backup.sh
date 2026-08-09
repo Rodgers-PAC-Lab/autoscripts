@@ -57,6 +57,7 @@ BACKUP=(
 	/volume1/homes/nanoz
 	/volume1/homes/octopus
 	/volume1/homes/rowan
+	/volume1/homes/RoomB
 	/volume1/homes/shared
 	/volume1/homes/sukrith
 	/volume1/homes/surgery
