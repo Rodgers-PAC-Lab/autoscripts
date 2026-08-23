@@ -33,6 +33,7 @@ RCLONE_OPTS=(
 	--exclude="@eaDir/"
 	--exclude=".phy/**"
 	--exclude=".phy/"
+	--exclude="rclone.conf"
 	--exclude="rclone_backup.log"
 	--modify-window=1ms
 	--fast-list
@@ -46,13 +47,10 @@ RCLONE_OPTS=(
 # The remote destination name is derived from the basename of each path
 # (see loop below), so /volume1/homes/abigail backs up to $REMOTE/abigail.
 BACKUP=(
-	/volume1/homes/abigail
 	/volume1/homes/abr
 	/volume1/homes/behavior
 	/volume1/homes/cedric
 	/volume1/homes/chris
-	/volume1/homes/christina
-	/volume1/homes/cici
 	/volume1/homes/lucas
 	/volume1/homes/nanoz
 	/volume1/homes/octopus
@@ -61,6 +59,7 @@ BACKUP=(
 	/volume1/homes/shared
 	/volume1/homes/sukrith
 	/volume1/homes/surgery
+    /volume1/homes/wanyi
 	/volume1/homes/whitematter
 	/volume1/homes/whitematter_D
 	/volume2/lucasX
@@ -72,10 +71,13 @@ BACKUP=(
 # Move to BACKUP above as needed.
 SKIP_SILENT=(
 	/volume1/homes/@eaDir
+	/volume1/homes/abigail
 	/volume1/homes/admin
 	/volume1/homes/pineapple
 	/volume1/homes/carrissa
 	/volume1/homes/cem
+	/volume1/homes/christina
+	/volume1/homes/cici
 	/volume1/homes/devinenilab
 	/volume1/homes/drew
 	/volume1/homes/dyerlab
