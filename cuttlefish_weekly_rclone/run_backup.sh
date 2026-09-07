@@ -48,6 +48,7 @@ RCLONE_OPTS=(
 # (see loop below), so /volume1/homes/abigail backs up to $REMOTE/abigail.
 BACKUP=(
 	/volume1/homes/abr
+	/volume1/homes/amy
 	/volume1/homes/behavior
 	/volume1/homes/cedric
 	/volume1/homes/chris
@@ -59,7 +60,7 @@ BACKUP=(
 	/volume1/homes/shared
 	/volume1/homes/sukrith
 	/volume1/homes/surgery
-    /volume1/homes/wanyi
+	/volume1/homes/wanyi
 	/volume1/homes/whitematter
 	/volume1/homes/whitematter_D
 	/volume2/lucasX
