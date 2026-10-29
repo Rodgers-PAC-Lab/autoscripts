@@ -52,12 +52,14 @@ BACKUP=(
 	/volume1/homes/behavior
 	/volume1/homes/cedric
 	/volume1/homes/chris
+	/volume1/homes/lili
 	/volume1/homes/lucas
 	/volume1/homes/nanoz
 	/volume1/homes/octopus
 	/volume1/homes/rowan
 	/volume1/homes/RoomB
 	/volume1/homes/shared
+	/volume1/homes/sophia
 	/volume1/homes/sukrith
 	/volume1/homes/surgery
 	/volume1/homes/wanyi
@@ -91,6 +93,8 @@ SKIP_SILENT=(
 	/volume1/homes/megan
 	/volume1/homes/osama
 	/volume1/homes/shrimp
+	/volume1/homes/sky
+	/volume1/homes/thomas
 	/volume1/homes/valentina
 	/volume2/@eaDir
 	/volume2/@sharesnap
